@@ -5,6 +5,6 @@ from django.contrib.auth.models import User
 class login_form_org(forms.ModelForm):
     class Meta:
         model = UserRegistration
-        fields = '__all__'
+        fields = ('UserName','Password','ConfirmPassword','Name','Salt','StartDate','ExpiredDate','Amount','Email','MobileNo')
     
     
