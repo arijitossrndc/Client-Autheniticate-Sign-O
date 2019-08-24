@@ -6,5 +6,5 @@ class login_form_org(forms.ModelForm):
     class Meta:
         model = UserRegistration
         fields = ('UserName','Password','ConfirmPassword','Name','Salt','StartDate','ExpiredDate','Amount','Email','MobileNo')
-    
+
     

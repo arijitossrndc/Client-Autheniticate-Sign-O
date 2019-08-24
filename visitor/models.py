@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from datetime import datetime
+from django.contrib.auth.hashers import make_password
 # Create your models here.
 class UserRegistration(models.Model):
     Id = models.AutoField(primary_key=True)
@@ -20,6 +21,11 @@ class UserRegistration(models.Model):
     ModifiedDate = models.DateTimeField(default=datetime.now)
     Email = models.CharField(max_length=100,default="")
     MobileNo = models.CharField(max_length=12,default="")
+
+    def save(self, *args, **kwargs):
+        self.Password = make_password(self.Password)
+        self.ConfirmPassword = make_password(self.ConfirmPassword)
+        super(UserRegistration, self).save(*args, **kwargs)
 
 
 class Departments(models.Model):

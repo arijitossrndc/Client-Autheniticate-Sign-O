@@ -1,11 +1,14 @@
 
-from django.shortcuts import render, HttpResponseRedirect, redirect, HttpResponse
+from django.shortcuts import render, HttpResponseRedirect, reverse,  redirect, HttpResponse
 from .models import UserRegistration
 from .forms import login_form_org
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import UserRegistrationSerializer
+from django.urls import reverse
+
+
 
 # register user
 
@@ -35,15 +38,18 @@ def create(request):
 			Amount = form.cleaned_data['Amount']
 			Email =form.cleaned_data['Email']
 			MobileNo = form.cleaned_data['MobileNo']
+
 		
 			if(password==confirm_password):
 				form.save()
+
 				form = login_form_org()
 				success = "Registered success"
 				context = {
 				'not':success,
 				'form':form,
 				}
+				return HttpResponseRedirect("create")
 			else:
 				form = login_form_org()
 				error = "password and confirm password doesnot not match"
