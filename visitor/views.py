@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, HttpResponseRedirect, reverse,  redirect, HttpResponse
 from .models import UserRegistration
-from .forms import login_form_org
+from .forms import login_form_org,register_form_org
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -59,6 +59,66 @@ def create(request):
 				}
 		
 		return render(request,'visitor/login_org.html')
+
+def login(request):
+
+	form =login_form_org()
+
+
+	if request.method == "GET":
+
+		if request.session.has_key('company'):
+
+			username = request.session['company']
+			error = "welcome back"
+			context = {
+			'username':username,
+			'error':error,
+			'form':form,
+			}
+			return render(request,'visitor/login_org.html',context)
+		else:
+			error ="Please login"
+			context = {
+			'form':form,
+			'error':error,
+			}
+		return render(request,'visitor/login_org.html',{'form':form})
+	else:
+
+		form = login_form_org(request.POST)
+		if form.is_valid():
+
+			company = request.POST['UserName']
+			password = request.POST['Password']
+
+			Check = UserRegistration.objects.filter(UserName=company,Password=password).count()
+
+			if(Check>=1):
+				request.session['company']=company
+				context={
+				'username':company,
+				'form':form,
+				}
+				return render(request,'visitor/login_org.html',context)
+			else:
+				error="please login"
+				context={
+				'error':error,
+				'form':form,
+				}
+
+				return render(request,'visitor/login_org.html',context)
+		
+
+def logout(request):
+	form = login_form_org()
+
+	del request.session['company']
+	context={
+	'form':form,
+	}
+	return render(request,'visitor/login_org.html',context)
 
 
 

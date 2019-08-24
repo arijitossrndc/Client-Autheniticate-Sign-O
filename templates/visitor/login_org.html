@@ -1,105 +1,62 @@
 <head>
-		<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-		<style>body, html {
-				height: 100%;
-				font-family: Arial, Helvetica, sans-serif;
-			}
-			
-			* {
-				box-sizing: border-box;
-			}
-			
-			.bg-img {
-				/* The image used */
-				/*background-image: url("static/img/login-01.png");*/
-			
-				height: auto;
-			
-				/* Center and scale the image nicely */
-				
-				background-repeat: no-repeat;
-				background-size: cover;
-				position: relative;
-			}
-			</style>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<style>
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  /* The image used */
+  
+
+  height: auto;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+</style>
 </head>
-<body><!-- As a link -->
+<body>
 
-<!-- As a heading -->
 <nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1 mx-auto">REGISTER</span>
+  <span class="navbar-brand mb-0 h1">Service</span>
 </nav>
-<center>
-<br>
+
 <div class="bg-img">
-		<div class="container col-lg-6 col-sm-12">
-	<div class= "mr-auto">
-		<div class="alert alert-primary" role="alert">
- 
-</div>
-
-<div class="card col-lg-8 col-sm-12">
-		<!--<img src="static/img/form-01.jpg" class="card-img-top img-fluid " height="200px">-->
-  <div class="card-header"><h2>
-   Register</h2>
-   {{ not }}
+  <div class="container"><br>
+  <h1 class="col-lg-8 text-center" style="color:white">welcome</h1></div>
+<div class="container justify-center pt-4 col-lg-4 col-md-12">
+  <div class="card">
+        {{ error }}
+  <div class="card-header">
+    <h2 class="text-center">Login</h2>
   </div>
-    <div class="card-body ">
-    <div class>
-    <form action="create" method="POST" name='form' class="sm-auto">
+  <div class="card-body">
+    {{ username }}
+  <form action="" method="POST" name='form'>
 	{% csrf_token %}
-	<div class="form-group">
-	<label><h4>UserName:</h4></label>
-	<input type="text" class="form-control form-control-sm" id="id_UserName" name="UserName" placeholder="Enter UserName">
-</div>
-<div class="form-group">
-	<label><h4>Password:</h4></label>
-	<input type="password" class="form-control form-control-sm" id="id_Password" name="Password" placeholder="Enter Password">
-</div>
-<div class="form-group">	
-	<label><h4>Confirm Password:</h4></label>
-	<input type="password" class="form-control form-control-sm" id="id_confirm_password" name="ConfirmPassword" placeholder="Enter Password Again"><br><br></div>
-	<div class="form-group">
-	<label><h4>Name:</h4></label>
-	<input type="text" class="form-control form-control-sm" id="id_Name" name="Name" placeholder="Enter Name">
-</div>
-<div class="form-group">
-	<label><h4>Salt:</h4></label>
-	<input type="text" class="form-control form-control-sm" id="id_Salt" name="Salt" placeholder="Enter Salt">
-</div>
-
-<div class="form-group">
-	<label><h4>StartDate:</h4></label>
-	<input type="date" class="form-control form-control-sm" id="id_Start_Date" name="StartDate" placeholder="Enter StartDate">
-</div>
-<div class="form-group">
-	<label><h4>ExpiredDate:</h4></label>
-	<input type="date" class="form-control form-control-sm" id="id_Expired_Date" name="ExpiredDate" placeholder="Enter ExpiredDate">
-</div>
-<div class="form-group">
-	<label><h4>Amount:</h4></label>
-	<input type="number" class="form-control form-control-sm" id="id_amount" name="Amount" placeholder="Enter Amount">
-</div>
-<div class="form-group">
-	<label><h4>Email:</h4></label>
-	<input type="email" class="form-control form-control-sm" id="id_email" name="Email" placeholder="Enter email">
-</div>
-<div class="form-group">
-	<label><h4>Mobile NO.:</h4></label>
-	<input type="text" class="form-control form-control-sm" id="id_mobile" name="MobileNo" placeholder="Enter mobile">
-</div>
-	<button type="submit" class="btn btn-lg btn-primary col-lg-12" style="background-color: orange;">Submit</button>
-</form>
-</div>
+	<input type="text" class="form-control form-control-lg" id="id_UserName" name="UserName" placeholder="Enter Company" required><br><br>
+  <input type="password" class="form-control form-control-lg" id="id_Password" name="Password" placeholder="Enter Password" required><br><br>
+  <div class="row">
+  
+<button type="submit" class="btn btn-lg col-lg-12" style="background-color: orange;"><h3>Submit</h3></button>	</form>
+  </div>
   </div>
 </div>
-</div>
-</center>
 </div>
 </div>
 </body>
