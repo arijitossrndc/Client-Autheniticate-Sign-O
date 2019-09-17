@@ -6,6 +6,29 @@
         <list>
           <option value="W29" />
           <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="E101" />
+          <option value="W191" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+          <option value="W29" />
+          <option value="E501" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="visitor.views.context" />
         </list>
       </option>
     </inspection_tool>

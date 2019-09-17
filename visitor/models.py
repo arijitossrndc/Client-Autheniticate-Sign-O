@@ -2,23 +2,24 @@ from django.db import models
 from django.utils import timezone
 from datetime import datetime
 from django.contrib.auth.hashers import make_password
+from django.core.validators import MinValueValidator
 # Create your models here.
 class UserRegistration(models.Model):
     Id = models.AutoField(primary_key=True)
-    UserName = models.CharField(max_length=50, null=True)
-    Password = models.CharField(max_length=100, null=True)
-    ConfirmPassword = models.CharField(max_length=100, null=True)
+    UserName = models.CharField(max_length=50, null=False)
+    Password = models.CharField(max_length=100, null=False)
+    ConfirmPassword = models.CharField(max_length=100, null=False)
     Name = models.CharField(max_length=50, null=True)
     Salt = models.CharField(max_length=20, null=True)
     isDeleted = models.BooleanField(null=True, default=False)
-    StartDate = models.DateTimeField(null=False,default=datetime.now)
-    ExpiredDate = models.DateTimeField(null=False,default=datetime.now)
-    Amount = models.DecimalField(null=True, max_digits=10000000, decimal_places=4)
+    StartDate = models.DateTimeField(default=timezone.now)
+    ExpiredDate = models.DateTimeField(default=timezone.now)
+    Amount = models.DecimalField(null=True, max_digits=12,validators=[MinValueValidator(0),], decimal_places=4)
     EmailService = models.BooleanField(null=True, default=True)
-    CreatedDate = models.DateTimeField(default=datetime.now)
+    CreatedDate = models.DateTimeField(default=timezone.now)
     CreatedBy = models.CharField(max_length=50,default="admin")
     ModifiedBy = models.CharField(max_length=50,default="admin")
-    ModifiedDate = models.DateTimeField(default=datetime.now)
+    ModifiedDate = models.DateTimeField(default=timezone.now)
     Email = models.CharField(max_length=100,default="")
     MobileNo = models.CharField(max_length=12,default="")
 
@@ -27,11 +28,20 @@ class UserRegistration(models.Model):
         self.ConfirmPassword = make_password(self.ConfirmPassword)
         super(UserRegistration, self).save(*args, **kwargs)
 
+    def __str__(self):
+
+        return str(self.Id)
+
+
 
 class Departments(models.Model):
     Id = models.AutoField(primary_key=True)
     UserId = models.ForeignKey(UserRegistration, on_delete=models.CASCADE,null=False)
     DepartmentName = models.CharField(max_length=100)
+
+    def __str__(self):
+
+        return str(self.Id)
 
 
 class Employee(models.Model):

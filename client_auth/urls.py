@@ -20,7 +20,7 @@ from visitor import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('visitor/',include('visitor.urls')),
+    path('client/',include('visitor.urls')),
 
     path('clients/',views.UserRegistrationList.as_view()),
 ]
